@@ -1,0 +1,9 @@
+{% for clan in clans %}
+    <h1>{{clan.icon}} {{clan.name}} {{clan.icon}}</h1>
+    {% for person in clan.leaderboard %}
+    <div>
+        @{{person.nibbleProfile.handle}} - 
+        {{person.points}} + {{person.nibbleProfile.points}} = {{person.points_in_total}}
+    </div>
+    {% endfor %}
+{% endfor %}
