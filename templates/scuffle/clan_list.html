@@ -1,21 +1,26 @@
 <h1>All clans</h1>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias veniam sapiente eveniet possimus, similique corporis voluptatibus ab, porro sit architecto natus sed repellendus laborum beatae, quas et? Nam, nostrum ducimus. Something witty or something. </p>
 <p>Something cool about the rivalry within the mischief that we're working together but a bit of scuffle for ~~cheese~~ points is always cool.</p>
+
 {% for clan in clans %}
+    <div style="text-align: center;">
 
-<div style="text-align: center;">
+        <h2>
+            <a href="{% url 'clan' pk=clan.id %}">
+                {{clan.icon}} {{clan.name}} {{clan.icon}}
+            </a>
+        </h2>
+        <p> {{clan.description}} </p>
 
-    <h2>{{clan.icon}} {{clan.name}} {{clan.icon}}</h2>
-    <p> {{clan.description}} </p>
+        <div>
+            <h3>Points total:</h3>
+        </div>
 
-    <div>
-        <h3>Points total:</h3>
+        <div>
+            <h3>The most points in the clan:</h3>
+        </div>
+
+        <hr>
+        
     </div>
-
-    <div>
-        <h3>The most points in the clan:</h3>
-    </div>
-
-    <hr>
-    {% endfor %}
-</div>
+{% endfor %}

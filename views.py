@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.db.models import F
 from .models import Clan, ScuffleProfile
 
@@ -15,6 +15,10 @@ class ClanListView(ListView):
     template_name = 'scuffle/clan_list.html'
     model = Clan
     context_object_name = "clans"
+
+class ClanDetailView(DetailView):
+    model = Clan
+    template_name = 'scuffle/clan.html'
 
 class LeaderboardView(TemplateView):
     template_name = 'scuffle/leaderboard.html'
