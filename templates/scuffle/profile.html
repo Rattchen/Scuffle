@@ -1,0 +1,10 @@
+<h1>{{profile.nibbleProfile.avatar}} {{profile.nibbleProfile.user.username}}</h1>
+<h2 style="font-style: italic;">@{{profile.nibbleProfile.handle}}</h2>
+<h3>Points total: {{profile.points_in_total}}</h3>
+<b>From Nibble:</b> {{profile.nibbleProfile.points}}
+<br />
+<b>From Scuffle:</b> {{profile.points}}
+
+nibbleProfile: <a href="{% url 'nibble:profile' handle=profile.nibbleProfile.handle %}">
+    Go to this person's profile on Nibble!
+</a>

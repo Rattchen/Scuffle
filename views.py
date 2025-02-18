@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import get_object_or_404
 from django.db.models import F
 from .models import Clan, ScuffleProfile
 
@@ -34,3 +35,10 @@ class LeaderboardView(TemplateView):
             ).order_by('-total_points')
         return context
 
+class ScuffleProfileDetailView(DetailView):
+    model = ScuffleProfile
+    template_name = 'scuffle/profile.html'
+    context_object_name = 'profile'
+
+    def get_object(self):
+        return get_object_or_404(ScuffleProfile, nibbleProfile__handle=self.kwargs["handle"])
