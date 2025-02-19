@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, ListView, DetailView, ArchiveIndexView
 from django.shortcuts import get_object_or_404
-from django.db.models import F,
+from django.db.models import F
 from .models import Clan, ScuffleProfile, Season
 
 class IndexView(TemplateView):
@@ -24,7 +24,7 @@ class ClanDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         clan = self.get_object()
-        context['season_records'] = clan.season_records.all()
+        context['season_records'] = clan.clan_records.all()
         return context
 
 class LeaderboardView(TemplateView):
