@@ -40,5 +40,12 @@ class ScuffleProfileDetailView(DetailView):
     template_name = 'scuffle/profile.html'
     context_object_name = 'profile'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.get_object()
+        activities = profile.activities.all()
+        context["activities"] = activities
+        return context
+
     def get_object(self):
         return get_object_or_404(ScuffleProfile, nibbleProfile__handle=self.kwargs["handle"])
