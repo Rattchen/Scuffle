@@ -23,20 +23,29 @@ class ScuffleProfile(models.Model):
 
 class Season(models.Model):
     ordinal = models.IntegerField(unique=True)
-    name = models.CharField(unique=True)
+    name = models.CharField(max_length=250, unique=True)
     start_date = models.DateField()
     end_date = models.DateField()
     has_finished = models.BooleanField()
 
+    def __str__(self):
+        return f"Season {self.ordinal}: {self.name}"
+
 class ClanSeasonRecord(models.Model):
     clan = models.ForeignKey(Clan, on_delete=models.CASCADE, related_name="season_records")
     season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="clan_records")
-    points = models.IntegerField()
+    points_total = models.IntegerField()
     rank = models.PositiveIntegerField()
     out_of = models.PositiveIntegerField() # How many clans there were in given season
+
+    def __str__(self):
+        return f"{self.clan.name} during season {self.season.ordinal}: {self.rank}/{self.out_of}"
 
 class Activity(models.Model):
     name = models.CharField(max_length=250)
     points = models.IntegerField()
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     assigned_to = models.ForeignKey(ScuffleProfile, on_delete=models.CASCADE, related_name="activities")
+
+    def __str__(self):
+        return f"{self.points} pts for {self.assigned_to.nibbleProfile.user.username}: {self.name}"
