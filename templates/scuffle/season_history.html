@@ -1,0 +1,7 @@
+{% for season in seasons %}
+<h1>Season #{{season.ordinal}}: <i>{{season.name}}</i></h1>
+<b>Started on</b> {{season.start_date}}, <b>ended on</b> {{season.end_date}} <br/>
+{% for record in season.season_records.all %}
+{{record}} <br/>
+{% endfor %}
+{% endfor %}

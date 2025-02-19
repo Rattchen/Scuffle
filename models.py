@@ -32,8 +32,8 @@ class Season(models.Model):
         return f"Season {self.ordinal}: {self.name}"
 
 class ClanSeasonRecord(models.Model):
-    clan = models.ForeignKey(Clan, on_delete=models.CASCADE, related_name="season_records")
-    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="clan_records")
+    clan = models.ForeignKey(Clan, on_delete=models.CASCADE, related_name="clan_records")
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="season_records")
     points_total = models.IntegerField()
     rank = models.PositiveIntegerField()
     out_of = models.PositiveIntegerField() # How many clans there were in given season

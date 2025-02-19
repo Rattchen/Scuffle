@@ -1,7 +1,7 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, ArchiveIndexView
 from django.shortcuts import get_object_or_404
-from django.db.models import F
-from .models import Clan, ScuffleProfile
+from django.db.models import F,
+from .models import Clan, ScuffleProfile, Season
 
 class IndexView(TemplateView):
     template_name = 'scuffle/index.html'
@@ -40,6 +40,16 @@ class LeaderboardView(TemplateView):
                 total_points = F('points')+F('nibbleProfile__points') #calculate manually since it's not a field but a @property
             ).order_by('-total_points')
         return context
+
+class SeasonArchiveIndexView(ArchiveIndexView):
+    model = Season
+    date_field = 'end_date'
+    template_name = 'scuffle/season_history.html'
+    context_object_name = 'seasons'
+    allow_future = True
+
+    def get_queryset(self):
+        return Season.objects.prefetch_related("season_records__clan")
 
 class ScuffleProfileDetailView(DetailView):
     model = ScuffleProfile
