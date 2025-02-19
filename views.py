@@ -21,6 +21,12 @@ class ClanDetailView(DetailView):
     model = Clan
     template_name = 'scuffle/clan.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        clan = self.get_object()
+        context['season_records'] = clan.season_records.all()
+        return context
+
 class LeaderboardView(TemplateView):
     template_name = 'scuffle/leaderboard.html'
     

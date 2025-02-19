@@ -5,5 +5,12 @@
 <div>
     List of all people and their points and their profiles
 </div>
+<h2>Clan history:</h2>
+{% for record in season_records %}
+<h3>Season {{record.season.ordinal}}: {{record.season.name}} </h3>
+<u>Rank:</u> <b>{{record.rank}}</b> out of {{record.out_of}} clans <br/>
+<u>Points gathered that season:</u> <b>{{record.points_total}}</b>
+<!-- It could be shown like those circles with "300 happy customers!" and other stats in pretty circles-->
+{% endfor %}
 <h2>Clan activity:</h2>
 logs of the last few stuff, load every 5 or 10 items; mostly from Nibble, I guess
