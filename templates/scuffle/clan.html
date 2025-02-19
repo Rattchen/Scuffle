@@ -1,3 +1,7 @@
+{% extends "scuffle/base.html" %}
+{% block "title" %}Clan {{clan.name}}{% endblock %}
+{% block "content" %}
+
 <h1>{{clan.icon}} {{clan.name}} {{clan.icon}}</h1>
 <p>{{clan.description}}</p>
 <h2>Clan leaderboard:</h2>
@@ -14,3 +18,5 @@
 {% endfor %}
 <h2>Clan activity:</h2>
 logs of the last few stuff, load every 5 or 10 items; mostly from Nibble, I guess
+
+{% endblock %}

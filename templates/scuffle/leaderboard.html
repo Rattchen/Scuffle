@@ -1,3 +1,7 @@
+{% extends "scuffle/base.html" %}
+{% block "title" %}Leaderboard{% endblock %}
+{% block "content" %}
+
 {% for clan in clans %}
     <h1>{{clan.icon}} {{clan.name}} {{clan.icon}}</h1>
     {% for person in clan.leaderboard %}
@@ -7,3 +11,5 @@
     </div>
     {% endfor %}
 {% endfor %}
+
+{% endblock %}

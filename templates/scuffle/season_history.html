@@ -1,3 +1,7 @@
+{% extends "scuffle/base.html" %}
+{% block "title" %}Season Archive{% endblock %}
+{% block "content" %}
+
 {% for season in seasons %}
 <h1>Season #{{season.ordinal}}: <i>{{season.name}}</i></h1>
 <b>Started on</b> {{season.start_date}}, <b>ended on</b> {{season.end_date}} <br/>
@@ -5,3 +9,5 @@
 {{record}} <br/>
 {% endfor %}
 {% endfor %}
+
+{% endblock %}

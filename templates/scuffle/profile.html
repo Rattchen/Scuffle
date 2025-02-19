@@ -1,3 +1,7 @@
+{% extends "scuffle/base.html" %}
+{% block "title" %}{{profile.nibbleProfile.user.username}}'s Profile{% endblock %}
+{% block "content" %}
+
 <h1>{{profile.nibbleProfile.avatar}} {{profile.nibbleProfile.user.username}}</h1>
 <h2 style="font-style: italic;">@{{profile.nibbleProfile.handle}}</h2>
 <h3>Points total: {{profile.points_in_total}}</h3>
@@ -12,3 +16,5 @@
 nibbleProfile: <a href="{% url 'nibble:profile' handle=profile.nibbleProfile.handle %}">
     Go to this person's profile on Nibble!
 </a>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block "title" %}{% endblock %} || Scuffle clans</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'scuffle:index' %}">Index</a> ||
+        <a href="{% url 'scuffle:clan_list' %}">All clans</a> ||
+        <a href="{% url 'scuffle:history' %}">History of seasons </a> ||
+        <a href="{% url 'scuffle:profile' handle='person1' %}">Examplary profile</a>
+    </nav>
+    {% block "content" %}{% endblock %}
+</body>
+</html>
